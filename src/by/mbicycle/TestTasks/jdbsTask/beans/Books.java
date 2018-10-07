@@ -1,12 +1,11 @@
 package by.mbicycle.TestTasks.jdbsTask.beans;
 
-import java.time.LocalDate;
 
 public class Books {
   private int idBook;
-  private Writers writers;
+  private int idWorker;
   private String name;
-  private LocalDate printData;
+  private String printData;
   private String printHouse;
   private String description;
 
@@ -14,15 +13,15 @@ public class Books {
     return idBook;
   }
 
-  public Writers getWriters() {
-    return writers;
+  public int getWritersId() {
+    return idWorker;
   }
 
   public String getName() {
     return name;
   }
 
-  public LocalDate getPrintData() {
+  public String getPrintData() {
     return printData;
   }
 
@@ -34,39 +33,45 @@ public class Books {
     return description;
   }
 
-  public void setIdBook(int idBook) {
+  public Books setIdBook(int idBook) {
     this.idBook = idBook;
+    return this;
   }
 
-  public void setWriters(Writers writers) {
-    this.writers = writers;
+  public Books setWriters(int idWorker) {
+    this.idWorker = idWorker;
+    return this;
   }
 
-  public void setName(String name) {
+  public Books setName(String name) {
     this.name = name;
+    return this;
   }
 
-  public void setPrintData(LocalDate printData) {
+  public Books setPrintData(String printData) {
     this.printData = printData;
+    return this;
   }
 
-  public void setPrintHouse(String printHouse) {
+  public Books setPrintHouse(String printHouse) {
     this.printHouse = printHouse;
+    return this;
   }
 
-  public void setDescription(String description) {
+  public Books setDescription(String description) {
     this.description = description;
+    return this;
   }
 
   public Books() {
     super();
   }
 
-  public Books(int idBook, Writers writers, String name, LocalDate printData, String printHouse,
+  public Books(int idBook, int idWorker, String name, String printData, String printHouse,
       String description) {
     super();
     this.idBook = idBook;
-    this.writers = writers;
+    this.idWorker = idWorker;
     this.name = name;
     this.printData = printData;
     this.printHouse = printHouse;
@@ -75,7 +80,7 @@ public class Books {
 
   @Override
   public String toString() {
-    return "Books [idBook=" + idBook + ", writers=" + writers + ", name=" + name + ", printData="
+    return "Books [idBook=" + idBook + ", writers=" + idWorker + ", name=" + name + ", printData="
         + printData + ", printHouse=" + printHouse + ", description=" + description + "]";
   }
 }

@@ -5,7 +5,7 @@ import by.mbicycle.TestTasks.jdbsTask.beans.Books;
 import by.mbicycle.TestTasks.jdbsTask.exception.DAOException;
 
 public interface IDaoBooks {
-  public List<Books> getBooks(Books books)throws DAOException;
-  public boolean setBooks(Books books)throws DAOException;
+  public List<Books> getBooks()throws DAOException;
+  public boolean addBooks(Books books)throws DAOException;
 
 }

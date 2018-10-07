@@ -15,7 +15,6 @@ import by.mbicycle.TestTasks.jdbsTask.factory.WriterFactory;
 public class DBWriter implements IDaoWriter {
   
   private final Connection connection;
-  private static final Object LOCK = new Object();
   
    public DBWriter() {
      this.connection = ConnectionSingleton.getDBConnection();
@@ -41,8 +40,22 @@ public class DBWriter implements IDaoWriter {
   }
 
   @Override
-  public boolean setWriter(Writers writers) throws DAOException {
-    return false;
+  public boolean addWriter(Writers writers) throws DAOException {
+    String InsertQeryForWriter = "insert into mtask.writer"
+        + "('lastName','firstName','birthday')"
+        + "values(?,?,?);";
+    PreparedStatement ps = null;
+    try{
+      ps = ConnectionSingleton.getDBConnection().prepareStatement(InsertQeryForWriter);
+      synchronized (ps) {
+        ps.setString(1, writers.getLastName());
+        ps.setString(2, writers.getLastName());
+        ps.setString(3, writers.getBirthday());
+        return ps.execute();
+      }
+    }catch(SQLException e){
+      throw new DAOException(e);
+    }
   }
 
 }
