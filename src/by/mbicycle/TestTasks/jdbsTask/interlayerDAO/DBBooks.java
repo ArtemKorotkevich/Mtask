@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import by.mbicycle.TestTasks.jdbsTask.beans.Books;
 import by.mbicycle.TestTasks.jdbsTask.connectionDB.ConnectionSingleton;
 import by.mbicycle.TestTasks.jdbsTask.connectionDB.HelperDB;
@@ -28,7 +29,7 @@ public class DBBooks implements IDaoBooks {
       rs = connection.createStatement().executeQuery(query);
       while(rs.next()){
         booksList.add(BookFactory.getBooksFromFactory(rs.getInt("idbook"),rs.getInt("idwriter"), 
-            rs.getString("name"), rs.getString("printData"), rs.getString("printingHouse"), rs.getString("printingHouse")));
+            rs.getString("name"), rs.getString("printDate"), rs.getString("printingHouse"), rs.getString("printingHouse")));
       }
       System.out.println(booksList);
       return booksList;
@@ -42,7 +43,7 @@ public class DBBooks implements IDaoBooks {
   @Override
   public boolean addBooks(Books books) throws DAOException {
     String InsertQeryForBook = "insert into mtask.book"
-        + "('idwriter','name','PrintData','printingHouse','description')"
+        + "(idwriter,name,PrintDate,printingHouse,description)"
         + "values(?,?,?,?,?);";
     PreparedStatement ps = null;
     try{
@@ -75,5 +76,23 @@ public class DBBooks implements IDaoBooks {
     }catch (SQLException e){
       throw new DAOException(e);
     } 
+  }
+  public static Books returnBooks(){
+    Scanner scanner = new Scanner(System.in);
+    while(scanner.hasNext()){
+      System.out.println("idWorker");
+      int idWorker = scanner.nextInt();
+      System.out.println("name");
+      String name = scanner.next();
+      System.out.println("printData");
+      String printData = scanner.next();
+      System.out.println("printHouse");
+      String printHouse = scanner.next();
+      System.out.println("description");
+      String description = scanner.next();
+      return new Books(idWorker, name, printData, printHouse, description);
+
+    }
+    return returnBooks();
   }
 }

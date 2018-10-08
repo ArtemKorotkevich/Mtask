@@ -77,6 +77,14 @@ public class Books {
     this.printHouse = printHouse;
     this.description = description;
   }
+  public Books(int idWorker, String name, String printData, String printHouse, String description) {
+    super();
+    this.idWorker = idWorker;
+    this.name = name;
+    this.printData = printData;
+    this.printHouse = printHouse;
+    this.description = description;
+  }
 
   @Override
   public String toString() {

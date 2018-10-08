@@ -53,10 +53,19 @@ public class Writers {
     this.firstName = firstName;
     this.birthday = birthday;
   }
+  
+  public Writers(String lastName, String firstName, String birthday) {
+    super();
+    this.lastName = lastName;
+    this.firstName = firstName;
+    this.birthday = birthday;
+  }
 
   @Override
   public String toString() {
     return "Writers [idWriter=" + idWriter + ", lastName=" + lastName + ", firstName=" + firstName
         + ", birthday=" + birthday + "]";
   }
+
+
 }
