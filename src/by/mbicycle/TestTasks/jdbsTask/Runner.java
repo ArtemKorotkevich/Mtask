@@ -17,7 +17,7 @@ public class Runner {
     Writers writers = new Writers();
     Books books = new Books();
     boolean flag = true;
-    System.out.println("menu: \n1.ShowWriter \n2. ShowBoks \n4. search by author \n4 add writer \n5 add book \n0 exit");
+    System.out.println("menu: \n1.ShowWriter \n2. ShowBoks \n3. search by author \n4 add writer \n5 add book \n0 exit");
     while(flag){
       Scanner scanner = new Scanner(System.in);
       int num = scanner.nextInt();
